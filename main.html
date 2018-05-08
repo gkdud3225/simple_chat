@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css" type="text/css">
+    <title>Main</title>
+  </head>
+
+  <body>
+    <font>Simple Chatting Service</font>
+    <div class="center">
+      <input type="button" value="page1" id="page1" onclick="openChild1()">
+      <input type="button" value="page2" id="page2" onclick="openChild2()">
+    </div>
+  </body>
+  <script type="text/javascript">
+    var childs = [];
+
+    var openChild1 = function (){
+      var child = window.open("child1.html");
+      childs.push(child);
+    }
+
+    function openChild2(){
+      var child = window.open("child2.html");
+      childs.push(child);
+    }
+
+    function calledChild(msg){
+      for(var i=0; i < childs.length; i++){
+        childs[i].addMsg(msg);
+      }
+    }
+  </script>
+</html>

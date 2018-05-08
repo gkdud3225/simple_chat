@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="style.css" type="text/css">
+  <title>Page1</title>
+  <script type="text/javascript">
+    function addMsg(msg){
+      var area = document.getElementById("chatArea");
+      area.innerHTML += "page1: " + msg + "<br>";
+    }
+
+    function callParent(){
+      var msg = document.getElementById("inputMsg").value;
+      opener.calledChild(msg);
+    }
+
+    function checkEnterKey(){
+      if(window.event.keyCode == 13){
+        msg = " ";
+        callParent();
+      }
+    }
+
+    function clearText(field){
+      if(field.defaultValue == field.value){
+        field.value = "";
+      }else if(field.value = ""){
+        field.defaultValue == field.value;
+      }
+    }
+   </script>
+</head>
+<body>
+  <div id="chatArea"></div>
+  <input type="text" placeholder="메시지를 입력하세요" id="inputMsg" onkeydown="checkEnterKey()" onFocus="clearText(this)">
+  <input type="button" value="전송" id="sendMsg" name="sendMsg" onclick="callParent()">
+</body>
+</html>
